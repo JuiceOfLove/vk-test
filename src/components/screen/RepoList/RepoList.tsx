@@ -13,7 +13,7 @@ const RepoList = () => {
         const handleScroll = () => {
             const {scrollTop, scrollHeight, clientHeight} = document.documentElement
 
-            if(scrollTop + clientHeight >= scrollHeight - 50) {
+            if(scrollTop + clientHeight >= scrollHeight - 20) {
                 if (!store.isLoading) {
                     store.repos()
                 }

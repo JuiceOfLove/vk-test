@@ -1,6 +1,10 @@
 import RepoService from "@/services/api.service";
-import {makeAutoObservable} from "mobx";
+import { action, makeAutoObservable, configure } from "mobx";
 
+// Фикс (Since strict-mode is enabled, changing (observed) observable values without using an action is not allowed)
+configure({
+    enforceActions: "never",
+})
 export default class Store {
     repositories: any[] = [];
     isLoading = false;
@@ -10,7 +14,9 @@ export default class Store {
     order: string = "desc";
 
     constructor() {
-        makeAutoObservable(this);
+        makeAutoObservable(this, {
+            repos: action,
+        });
     }
 
     setLoading(bool: boolean) {

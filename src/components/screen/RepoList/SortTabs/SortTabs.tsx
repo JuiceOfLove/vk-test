@@ -1,8 +1,7 @@
 import { Context } from "@/main";
-import { SelectContent, SelectItem, SelectLabel, SelectTrigger, SelectValueText } from "@ark-ui/react";
-import { Box, createListCollection, HStack, SelectRoot } from "@chakra-ui/react";
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect, useState } from "react";
+import styles from "./SortTabs.module.css";
 
 const SortTabs = () => {
     const { store } = useContext(Context);
@@ -21,41 +20,21 @@ const SortTabs = () => {
         setValue(val);
     }
 
-    const selectValues = createListCollection({
-        items: [
-            {label: "Stars DESC", value: "stars-desc"},
-            {label: "Stars ASC", value: "stars-asc"},
-            {label: "Updated DESC", value: "updated-desc"},
-            {label: "Updated ASC", value: "updated-asc"},
-        ]
-    })
-
     return (
-        <Box p={4}>
-            <HStack mb="4">
-             <SelectRoot
-                collection={selectValues}
-                width="320px"
-                value={value ? [value] : []}
-                onValueChange={(e) => {
-                    handleValue(e.value[0])
-                }}
-             >
-                <SelectLabel>Сортировка</SelectLabel>
-                <SelectTrigger>
-                    <SelectValueText placeholder="Выберите порядок" />
-                </SelectTrigger>
-
-                <SelectContent>
-                    {selectValues.items.map((option) => (
-                        <SelectItem item={option} key={option.value}>
-                            {option.label}
-                        </SelectItem>
-                    ))}
-                </SelectContent>
-             </SelectRoot>
-            </HStack>
-        </Box>
+        <div className={styles.container}>
+            <label htmlFor="sort" className={styles.label}>Сортировать по:</label>
+            <select
+                className={styles.select}
+                value={value}
+                id="sort"
+                onChange={(e) => handleValue(e.target.value)}
+            >
+                <option value="stars-desc">Stars DESC</option>
+                <option value="stars-asc">Stars ASC</option>
+                <option value="updated-desc">Updated DESC</option>
+                <option value="updated-asc">Updated ASC</option>
+            </select>
+        </div>
     )
 }
 
