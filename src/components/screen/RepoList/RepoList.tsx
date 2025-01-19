@@ -50,7 +50,7 @@ const RepoList = () => {
                             maxH='auto'
                         >
                             <Text fontWeight='bold'>{rep.name}</Text>
-                            {rep.discription && (
+                            {rep.description && (
                                 <Text fontSize='sm' mb={2}>
                                     {rep.description}
                                 </Text>

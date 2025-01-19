@@ -32,9 +32,9 @@ const FavouriteList = () => {
                             {rep.name}
                         </Text>
 
-                        {rep.discription && (
+                        {rep.description && (
                             <Text fontSize='sm' mb={2}>
-                                {rep.discription}
+                                {rep.description}
                             </Text>
                         )}
 

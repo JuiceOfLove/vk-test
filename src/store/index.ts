@@ -1,4 +1,5 @@
 import RepoService from "@/services/api.service";
+import { IGitHubRepo } from "@/types/github";
 import { action, makeAutoObservable, configure } from "mobx";
 
 // Фикс (Since strict-mode is enabled, changing (observed) observable values without using an action is not allowed)
@@ -6,7 +7,7 @@ configure({
     enforceActions: "never",
 })
 export default class Store {
-    repositories: any[] = [];
+    repositories: IGitHubRepo[] = [];
     isLoading = false;
     page = 1;
     perPage = 8;
