@@ -29,7 +29,7 @@ const RepoList = () => {
 
 
     return (
-        <Box p={4}>
+        <Box p={8} w="100%">
             <Heading size='lg' mb={4}>
                 <SortTabs />
             </Heading>
@@ -37,6 +37,8 @@ const RepoList = () => {
                 border='2px solid #77DDE7'
                 borderRadius='md'
                 p={4}
+                margin="0 auto"
+                w="60%"
             >
                 <VStack align="stretch">
                     {store.repositories.map((rep) => (
@@ -54,22 +56,27 @@ const RepoList = () => {
                                 </Text>
                             )}
 
-                            {rep.favorite && <Text color="green.500">Избранное</Text>}
+                            {rep.favorite && <Text color="green.500">В избранном</Text>}
 
-                            <Button
-                                size='sm'
-                                colorScheme='#A2A2D0'
-                                onClick={()=> store.addFavouriteById(rep.id)}
+                            <Box
+                                display="flex"
+                                justifyContent="space-between"
                             >
-                                {rep.favorite ? "Убрать из избранного" : "Добавить в избранное"}
-                            </Button>
-                            <Button
-                                size='sm'
-                                colorScheme='#7B001C'
-                                onClick={()=> store.deleteRepoById(rep.id)}
-                            >
-                                Удалить
-                            </Button>
+                                <Button
+                                    size='sm'
+                                    colorScheme='#A2A2D0'
+                                    onClick={()=> store.addFavouriteById(rep.id)}
+                                >
+                                    {rep.favorite ? "Убрать из избранного" : "Добавить в избранное"}
+                                </Button>
+                                <Button
+                                    size='sm'
+                                    colorScheme='#7B001C'
+                                    onClick={()=> store.deleteRepoById(rep.id)}
+                                >
+                                    Удалить
+                                </Button>
+                            </Box>
                         </Box>
                     ))}
 

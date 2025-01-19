@@ -8,7 +8,7 @@ const FavouriteList = () => {
     const favoriteReps = store.repositories.filter((rep) => rep.favorite);
 
     return (
-        <Box p={4}>
+        <Box p={8} w="100%">
             <Heading size="lg" mb={4}>
                 Избранные
             </Heading>
@@ -22,9 +22,11 @@ const FavouriteList = () => {
                 {favoriteReps.map((rep) => (
                     <Box
                         key={rep.id}
-                        p={2}
-                        border='1px solid #c5c5c5'
+                        border='2px solid #77DDE7'
                         borderRadius='md'
+                        p={4}
+                        margin="0 auto"
+                        w="60%"
                     >
                         <Text fontWeight='bold'>
                             {rep.name}

@@ -5,7 +5,7 @@ import { Tabs } from "@chakra-ui/react"
 const Header = () => {
   return (
       <Tabs.Root defaultValue = "default">
-        <Tabs.List>
+        <Tabs.List gap={5} pl={3}>
           <Tabs.Trigger value="default">
             Репозитории
           </Tabs.Trigger>
